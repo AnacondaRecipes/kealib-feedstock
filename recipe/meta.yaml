@@ -1,43 +1,38 @@
 {% set version = "1.4.7" %}
 
 package:
-    name: kealib
-    version: {{ version }}
+  name: kealib
+  version: {{ version }}
 
 source:
-    fn: kealib-{{ version }}.tar.gz
-    url: https://bitbucket.org/chchrsc/kealib/downloads/kealib-{{ version }}.tar.gz
-    sha256: ec38751b3b555d3a26f0c7445f2d2cd9d7c3a3502237519a206a50cb58df56ec
+  url: https://bitbucket.org/chchrsc/kealib/downloads/kealib-{{ version }}.tar.gz
+  sha256: ec38751b3b555d3a26f0c7445f2d2cd9d7c3a3502237519a206a50cb58df56ec
 
 build:
-    number: 2
-    skip: True  # [win and py36]
-    features:
-        - vc9  # [win and py27]
-        - vc10  # [win and py34]
-        - vc14  # [win and py35]
+  number: 3
+  features:
+    - vc{{ vc }}  # [win]
 
 requirements:
-    build:
-        - toolchain
-        - python  # [win]
-        - cmake
-        - hdf5 1.8.18|1.8.18.*
-
-    run:
-        - hdf5 1.8.18|1.8.18.*
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake
+  host:
+    - hdf5
 
 test:
-    commands:
-        - conda inspect linkages -p $PREFIX kealib  # [not win]
-        - conda inspect objects -p $PREFIX kealib  # [osx]
+  commands:
+    - conda inspect linkages -p $PREFIX kealib  # [not win]
+    - conda inspect objects -p $PREFIX kealib  # [osx]
 
 about:
-    home: http://kealib.org/
-    license: MIT
-    summary: The KEA format provides an implementation of the GDAL specification within the the HDF5 file format.
+  home: http://kealib.org/
+  license: MIT
+  summary: The KEA format provides an implementation of the GDAL specification within the the HDF5 file format.
 
 extra:
-    recipe-maintainers:
-        - gillins
-        - danclewley
+  recipe-maintainers:
+    - gillins
+    - danclewley
+    - msarahan
