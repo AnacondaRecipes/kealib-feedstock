@@ -12,7 +12,7 @@ source:
     - soversion.patch
 
 build:
-  number: 4
+  number: 5
   run_exports:
     # no idea.  Sticking with minor version.  C++ lib, so may need tighter.
     - {{ pin_subpackage('kealib', max_pin='x.x') }}
@@ -24,6 +24,7 @@ requirements:
     - cmake
   host:
     - hdf5
+    - msinttypes  # [win and vc<14]
 
 test:
   commands:
