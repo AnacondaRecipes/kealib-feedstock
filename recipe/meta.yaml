@@ -1,4 +1,4 @@
-{% set version = "1.4.7" %}
+{% set version = "1.4.12" %}
 
 package:
   name: kealib
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://bitbucket.org/chchrsc/kealib/downloads/kealib-{{ version }}.tar.gz
-  sha256: ec38751b3b555d3a26f0c7445f2d2cd9d7c3a3502237519a206a50cb58df56ec
+  sha256: 0b100e36b3e25e57487aa197d7be47f22e1b30afb16a57fdaa5f877696ec321e
 
 build:
-  number: 6
+  number: 0
   run_exports:
     # no idea.  Sticking with minor version.  C++ lib, so may need tighter.
     - {{ pin_subpackage('kealib', max_pin='x.x') }}
