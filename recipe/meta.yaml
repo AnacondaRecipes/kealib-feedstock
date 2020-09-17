@@ -1,4 +1,4 @@
-{% set version = "1.4.12" %}
+{% set version = "None" %}
 
 package:
   name: kealib
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://bitbucket.org/chchrsc/kealib/downloads/kealib-{{ version }}.tar.gz
-  sha256: 0b100e36b3e25e57487aa197d7be47f22e1b30afb16a57fdaa5f877696ec321e
+  sha256: 54adc445b0a1498447ec2315989ece6dc25a54253658bdf272b32fd051674aa7
 
 build:
   number: 0
