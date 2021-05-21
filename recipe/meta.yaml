@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://bitbucket.org/chchrsc/kealib/downloads/kealib-{{ version }}.tar.gz
+  url: https://github.com/ubarsc/kealib/releases/download/kealib-{{ version }}/kealib-{{ version }}.tar.gz
   sha256: 0b100e36b3e25e57487aa197d7be47f22e1b30afb16a57fdaa5f877696ec321e
 
 build:
