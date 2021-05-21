@@ -9,4 +9,8 @@ cmake -D CMAKE_INSTALL_PREFIX=$PREFIX \
 
 make -j${CPU_COUNT}
 make install
+
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
 make test
+fi
+
