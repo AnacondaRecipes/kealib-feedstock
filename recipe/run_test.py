@@ -5,11 +5,14 @@ import sys
 import ctypes
 
 if sys.platform == 'win32':
-    kealib = ctypes.CDLL('libkea.dll')
+    path = os.path.join(sys.prefix, 'Library', 'bin', 'libkea.dll')
+    kealib = ctypes.CDLL(path)
 elif sys.platform == 'darwin':
-    # LD_LIBRARY_PATH not set on OSX
-    keapath = os.path.expandvars('$PREFIX/lib/libkea.dylib')
-    kealib = ctypes.CDLL(keapath)
+    path = os.path.expandvars('$PREFIX/lib/libkea.dylib')
+    kealib = ctypes.CDLL(path)
+elif sys.platform.startswith('linux'):
+    path = os.path.expandvars('$PREFIX/lib/libkea.so')
+    kealib = ctypes.CDLL(path)
 else:
-    kealib = ctypes.CDLL('libkea.so')
+    raise Exception('Cannot recognize platform {!r}'.format(sys.platform))
 

@@ -1,4 +1,4 @@
-{% set version = "1.4.12" %}
+{% set version = "1.4.14" %}
 
 package:
   name: kealib
@@ -6,10 +6,11 @@ package:
 
 source:
   url: https://github.com/ubarsc/kealib/releases/download/kealib-{{ version }}/kealib-{{ version }}.tar.gz
-  sha256: 0b100e36b3e25e57487aa197d7be47f22e1b30afb16a57fdaa5f877696ec321e
+  sha256: da5d4a540b34afb61665cb7b6bf284825b51464eaf2a23ccca16955e2712cab2
 
 build:
   number: 0
+  skip: True  # [win and vc<14]
   run_exports:
     # no idea.  Sticking with minor version.  C++ lib, so may need tighter.
     - {{ pin_subpackage('kealib', max_pin='x.x') }}
@@ -23,16 +24,34 @@ requirements:
   host:
     - hdf5
     - msinttypes  # [win and vc<14]
+  run:
+    - hdf5
 
 test:
   commands:
     - conda inspect linkages -p $PREFIX kealib  # [not win]
     - conda inspect objects -p $PREFIX kealib  # [osx]
 
+#test:
+#  requires:
+#    - libgdal
+#  commands:
+#    # check we haven't broken GDAL
+#    - gdal_translate --formats
+
 about:
   home: http://kealib.org/
   license: MIT
+  license_file: LICENSE.txt
   summary: The KEA format provides an implementation of the GDAL specification within the the HDF5 file format.
+  description: |
+    "KEA is an image file format, named after the New Zealand bird, that provides a full implementation 
+    of the GDAL data model and is implemented within a HDF5 file. A software library, libkea, is used 
+    to access the file format. The format has comparable performance with existing formats while 
+    producing smaller file sizes and is already within active use for a number of projects 
+    within Landcare Research, New Zealand, and the wider community."
+  doc_url: https://gdal.org/drivers/raster/kea.html
+  dev_url: https://github.com/ubarsc/kealib
 
 extra:
   recipe-maintainers:
