@@ -28,6 +28,8 @@ requirements:
     - hdf5
 
 test:
+  requires:
+    - conda-build
   commands:
     - conda inspect linkages -p $PREFIX kealib  # [not win]
     - conda inspect objects -p $PREFIX kealib  # [osx]
