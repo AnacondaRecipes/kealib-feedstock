@@ -23,7 +23,6 @@ requirements:
     - make  # [unix]
   host:
     - hdf5
-    - msinttypes  # [win and vc<14]
   run:
     - hdf5
 
