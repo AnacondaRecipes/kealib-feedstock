@@ -6,6 +6,8 @@ cmake -D CMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
       -D CMAKE_BUILD_TYPE=Release ^
       -D HDF5_INCLUDE_DIR=%LIBRARY_PREFIX%\include ^
       -D HDF5_LIB_PATH=%LIBRARY_PREFIX%\lib ^
+      -DCMAKE_C_FLAGS="-DH5_BUILT_AS_DYNAMIC_LIB" ^
+      -DCMAKE_CXX_FLAGS="-DH5_BUILT_AS_DYNAMIC_LIB" ^
       -G "NMake Makefiles" ..
 if errorlevel 1 exit 1
 
