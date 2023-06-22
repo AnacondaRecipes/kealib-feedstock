@@ -9,7 +9,7 @@ source:
   sha256: d19a0fb051019f87fe413bda76472bf4fff8fca52ede92e0ffd983caeafd05b8
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win and vc<14]
   run_exports:
     # no idea.  Sticking with minor version.  C++ lib, so may need tighter.
@@ -22,16 +22,16 @@ requirements:
     - cmake
     - make  # [unix]
   host:
-    - hdf5
+    - hdf5 1.12.1
   run:
     - hdf5
 
-#test:
-#  requires:
-#    - libgdal
-#  commands:
-#    # check we haven't broken GDAL
-#    - gdal_translate --formats
+test:
+ requires:
+   - libgdal
+ commands:
+   # check we haven't broken GDAL
+   - gdal_translate --formats
 
 about:
   home: http://kealib.org/
@@ -49,6 +49,8 @@ about:
   dev_url: https://github.com/ubarsc/kealib
 
 extra:
+  skip-lints:
+    - http_url
   recipe-maintainers:
     - gillins
     - danclewley
