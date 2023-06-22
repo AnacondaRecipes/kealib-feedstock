@@ -1,0 +1,8 @@
+channels:
+  jcmorin-ana-org: gdal
+
+build_parameters:
+  - "--suppress-variables"
+  - "--skip-existing"
+  - "--error-overlinking"
+  - "--error-overdepending"
