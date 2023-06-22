@@ -1,6 +1,8 @@
 channels:
   jcmorin-ana-org: gdal
 
+upload_without_merge: true
+
 build_parameters:
   - "--suppress-variables"
   - "--skip-existing"
