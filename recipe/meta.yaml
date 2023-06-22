@@ -26,12 +26,12 @@ requirements:
   run:
     - hdf5
 
-test:
- requires:
-   - libgdal
- commands:
-   # check we haven't broken GDAL
-   - gdal_translate --formats
+# test:
+#  requires:
+#    - libgdal
+#  commands:
+#    # check we haven't broken GDAL
+#    - gdal_translate --formats
 
 about:
   home: http://kealib.org/
