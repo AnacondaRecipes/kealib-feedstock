@@ -9,7 +9,7 @@ source:
   sha256: 6c892db9c95d32fa67f927ca37e8019dcbca5146353d69ee8af3e71935115edd
 
 build:
-  number: 2
+  number: 0
   skip: True  # [win and vc<14]
   run_exports:
     # no idea.  Sticking with minor version.  C++ lib, so may need tighter.
