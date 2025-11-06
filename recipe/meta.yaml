@@ -1,22 +1,23 @@
-{% set version = "1.5.0" %}
+{% set name = "kealib" %}
+{% set version = "1.6.2" %}
 
 package:
-  name: kealib
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://github.com/ubarsc/kealib/releases/download/kealib-{{ version }}/kealib-{{ version }}.tar.gz
-  sha256: d19a0fb051019f87fe413bda76472bf4fff8fca52ede92e0ffd983caeafd05b8
+  url: https://github.com/ubarsc/{{ name }}/releases/download/{{ name }}-{{ version }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 815b8d335b8d4b9048baf863cdd3959d12210f158a86f6a0d1954c7d39ce6db0
 
 build:
-  number: 2
-  skip: True  # [win and vc<14]
+  number: 0
   run_exports:
     # no idea.  Sticking with minor version.  C++ lib, so may need tighter.
     - {{ pin_subpackage('kealib', max_pin='x.x') }}
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
@@ -26,31 +27,22 @@ requirements:
   run:
     - hdf5
 
-# test:
-#  requires:
-#    - libgdal
-#  commands:
-#    # check we haven't broken GDAL
-#    - gdal_translate --formats
-
 about:
-  home: http://kealib.org/
+  home: https://kealib.org
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
-  summary: The KEA format provides an implementation of the GDAL specification within the the HDF5 file format.
+  summary: The KEA format provides an implementation of the GDAL specification within the the HDF5 file format
   description: |
-    "KEA is an image file format, named after the New Zealand bird, that provides a full implementation
+    KEA is an image file format, named after the New Zealand bird, that provides a full implementation
     of the GDAL data model and is implemented within a HDF5 file. A software library, libkea, is used
     to access the file format. The format has comparable performance with existing formats while
     producing smaller file sizes and is already within active use for a number of projects
-    within Landcare Research, New Zealand, and the wider community."
+    within Landcare Research, New Zealand, and the wider community"
   doc_url: https://gdal.org/drivers/raster/kea.html
   dev_url: https://github.com/ubarsc/kealib
 
 extra:
-  skip-lints:
-    - http_url
   recipe-maintainers:
     - gillins
     - danclewley
