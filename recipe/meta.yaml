@@ -10,7 +10,7 @@ source:
   sha256: 815b8d335b8d4b9048baf863cdd3959d12210f158a86f6a0d1954c7d39ce6db0
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # no idea.  Sticking with minor version.  C++ lib, so may need tighter.
     - {{ pin_subpackage('kealib', max_pin='x.x') }}
